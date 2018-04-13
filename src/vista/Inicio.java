@@ -47,6 +47,11 @@ public class Inicio extends javax.swing.JPanel {
             botonPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER,0,0));
             JButton boton = new JButton();
             boton.setIcon(pelicula.getInfo().getPoster());
+            boton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    control.goDetail(pelicula);
+                }
+            });
             botonPanel.add(boton);
             panel.add(botonPanel);
             

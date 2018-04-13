@@ -12,18 +12,15 @@ import main.StateMachine;
  *
  * @author aarroyoc
  */
-public class InicioController {
-    private final Cartelera cartelera;
-    private final Inicio vista;
+public class DetalleController {
+    
     private final StateMachine state;
+    private final Pelicula pelicula;
+    private final Detalle detalle;
     
-    public InicioController(StateMachine state,Cartelera cartelera,Inicio inicio){
-        this.vista = inicio;
-        this.cartelera = cartelera;
+    public DetalleController(StateMachine state, Pelicula pelicula, Detalle detalle){
         this.state = state;
-    }
-    
-    public void goDetail(Pelicula pelicula){
-        state.verDetalles(pelicula);
+        this.pelicula = pelicula;
+        this.detalle = detalle;
     }
 }

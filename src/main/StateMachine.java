@@ -39,7 +39,7 @@ public class StateMachine extends JFrame {
     }
     
     public void verDetalles(Pelicula pelicula){
-        this.currentState = new Detalle(pelicula);
+        this.currentState = new Detalle(this,pelicula);
         this.update();
     }
     
