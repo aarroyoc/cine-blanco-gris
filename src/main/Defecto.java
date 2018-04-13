@@ -115,7 +115,7 @@ public class Defecto {
         
         info = new PeliculaInfo(
                 "La Dolce Vita",
-                "La República Democrática de Freedonia, un pequeño país centroeuropeo, a cuyo frente se encuentra el muy liberal señor Rufus T. Firefly, se ve amenazada por la dictadura de Sylvania, país de vieja y reconocida solvencia como agresor. Dos espías de prestigio, Chicolini y Pinky, sirven a Sylvania, lo que no impide que acaben siendo ministros del ahora ya excelentísimo Firefly.",
+                "Marcello Rubini es un desencantado periodista romano, en busca de celebridades, que se mueve con insatisfacción por las fiestas nocturnas que celebra la burguesía de la época. Merodea por distintos lugares de Roma, siempre rodeado de todo tipo de personajes, especialmente de la élite de la sociedad italiana. En una de sus salidas se entera de que Sylvia, una célebre diva del mundo del cine, llega a Roma, cree que ésta es una gran oportunidad para conseguir una gran noticia, y, en consecuencia, la perseguirá por las noches por diferentes lugares de la ciudad. ",
                 "Federico Fellini",
                 1960,
                 "LaDolceVita.jpg");

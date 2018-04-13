@@ -23,4 +23,8 @@ public class DetalleController {
         this.pelicula = pelicula;
         this.detalle = detalle;
     }
+    
+    public void goBack(){
+        state.goCartelera();
+    }
 }

@@ -43,6 +43,11 @@ public class StateMachine extends JFrame {
         this.update();
     }
     
+    public void goCartelera(){
+        this.currentState = new Inicio(this,this.cartelera);
+        this.update();
+    }
+    
     private void update(){
         this.setContentPane(this.currentState);
         this.validate();
