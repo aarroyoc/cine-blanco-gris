@@ -10,7 +10,7 @@ import modelo.Cartelera;
 import modelo.PeliculaInfo;
 import modelo.Pelicula;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 /**
  * Valores por defecto del modelo
@@ -31,8 +31,8 @@ public class Defecto {
                 1953,
                 "BienvenidoMrMarshall.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(19,30));
-        pelicula.addSesion(LocalTime.of(22,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,20,19,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,21,22,30));
         cartelera.addPelicula(pelicula);
         
         /* Casablanca */
@@ -44,8 +44,8 @@ public class Defecto {
                 1942,
                 "Casablanca.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(19,30));
-        pelicula.addSesion(LocalTime.of(22,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,21,19,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,21,22,30));
         cartelera.addPelicula(pelicula);
         
         /* Ciudadano Kane */
@@ -57,8 +57,8 @@ public class Defecto {
                 1941,
                 "CiudadanoKane.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(19,30));
-        pelicula.addSesion(LocalTime.of(22,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,21,19,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,23,22,30));
         cartelera.addPelicula(pelicula);
         
         /* Dr Strange */
@@ -70,7 +70,7 @@ public class Defecto {
                 1964,
                 "DrStrange.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(20,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,23,20,30));
         cartelera.addPelicula(pelicula);
         
         /* El Gran Dictador */
@@ -82,7 +82,7 @@ public class Defecto {
                 1940,
                 "ElGranDictador.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(22,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,22,22,30));
         cartelera.addPelicula(pelicula);
         
         /* Que Bello es Vivir */
@@ -94,8 +94,9 @@ public class Defecto {
                 1940,
                 "QueBelloEsVivir.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(18,30));
-        pelicula.addSesion(LocalTime.of(21,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,21,18,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,21,21,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,22,21,30));
         cartelera.addPelicula(pelicula);
         
         /* Sopa de ganso */
@@ -107,8 +108,8 @@ public class Defecto {
                 1933,
                 "SopaDeGanso.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(18,00));
-        pelicula.addSesion(LocalTime.of(22,00));
+        pelicula.addSesion(LocalDateTime.of(2018,4,22,18,00));
+        pelicula.addSesion(LocalDateTime.of(2018,4,22,22,00));
         cartelera.addPelicula(pelicula);
         
         /* La Dolce Vita */
@@ -120,7 +121,7 @@ public class Defecto {
                 1960,
                 "LaDolceVita.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(20,00));
+        pelicula.addSesion(LocalDateTime.of(2018,4,22,20,00));
         cartelera.addPelicula(pelicula);
         
         /* Matar a un ruiseñor */
@@ -132,8 +133,8 @@ public class Defecto {
                 1962,
                 "MatarAUnRuiseñor.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(18,45));
-        pelicula.addSesion(LocalTime.of(21,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,20,18,45));
+        pelicula.addSesion(LocalDateTime.of(2018,4,20,21,30));
         cartelera.addPelicula(pelicula);
         
         /* Psycho */
@@ -145,8 +146,8 @@ public class Defecto {
                 1960,
                 "Psycho.jpg");
         pelicula = new Pelicula(info);
-        pelicula.addSesion(LocalTime.of(18,45));
-        pelicula.addSesion(LocalTime.of(21,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,21,18,45));
+        pelicula.addSesion(LocalDateTime.of(2018,4,23,21,30));
         cartelera.addPelicula(pelicula);
 
         

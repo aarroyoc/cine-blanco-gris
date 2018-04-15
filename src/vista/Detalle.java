@@ -8,6 +8,16 @@ package vista;
 import modelo.Pelicula;
 import main.StateMachine;
 
+import javax.swing.JPanel;
+import javax.swing.JButton;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author aarroyoc
@@ -16,6 +26,7 @@ public class Detalle extends javax.swing.JPanel {
 
     private final Pelicula pelicula;
     private final DetalleController control;
+    
     
     public Detalle(StateMachine state, Pelicula pelicula) {
         this.pelicula = pelicula;
@@ -32,6 +43,20 @@ public class Detalle extends javax.swing.JPanel {
         year.setText(pelicula.getInfo().getAnno()+"");
         img.setText("");
         img.setIcon(pelicula.getInfo().getPoster());
+        
+        /* update sesiones */
+        pelicula.getSesiones().forEach((date,times) -> {
+            JPanel panel = new JPanel();
+            panel.setLayout(new javax.swing.BoxLayout(panel,javax.swing.BoxLayout.X_AXIS));
+            
+            times.forEach((time)->{
+                JButton button = new JButton();
+                button.setText(time.format(DateTimeFormatter.ofPattern("HH:mm")));
+                panel.add(button);
+            });
+            sesiones.addTab(date.format(DateTimeFormatter.ofPattern("dd")), panel);
+        });
+        
     }
 
     /**
@@ -51,10 +76,10 @@ public class Detalle extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         year = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        sesiones = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         sinopsis = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        sesiones = new javax.swing.JTabbedPane();
 
         setPreferredSize(new java.awt.Dimension(700, 500));
 
@@ -80,8 +105,6 @@ public class Detalle extends javax.swing.JPanel {
 
         jLabel9.setFont(new java.awt.Font("Cantarell", 3, 15)); // NOI18N
         jLabel9.setText("sesiones");
-
-        sesiones.setLayout(new javax.swing.BoxLayout(sesiones, javax.swing.BoxLayout.Y_AXIS));
 
         sinopsis.setEditable(false);
         sinopsis.setColumns(20);
@@ -115,29 +138,29 @@ public class Detalle extends javax.swing.JPanel {
                             .addComponent(director)
                             .addComponent(jLabel7)
                             .addComponent(year)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sesiones, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(116, 116, 116)
+                                .addGap(61, 61, 61)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(sesiones, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(31, 31, 31))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(peliculaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,8 +171,11 @@ public class Detalle extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(year))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(year)
+                        .addGap(6, 6, 6)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(46, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(276, 276, 276)
@@ -157,11 +183,9 @@ public class Detalle extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(img, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)))
-                .addComponent(sesiones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sesiones)
+                        .addGap(24, 24, 24))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -180,7 +204,7 @@ public class Detalle extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel peliculaNombre;
-    private javax.swing.JPanel sesiones;
+    private javax.swing.JTabbedPane sesiones;
     private javax.swing.JTextArea sinopsis;
     private javax.swing.JLabel year;
     // End of variables declaration//GEN-END:variables
