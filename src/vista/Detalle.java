@@ -38,7 +38,7 @@ public class Detalle extends javax.swing.JPanel {
     
     public void update(){
         peliculaNombre.setText(pelicula.getInfo().getNombre());
-        sinopsis.setText(pelicula.getInfo().getDescripcion());
+        sinopsis.setText(pelicula.getInfo().getSinopsis());
         director.setText(pelicula.getInfo().getDirector());
         year.setText(pelicula.getInfo().getAnno()+"");
         img.setText("");

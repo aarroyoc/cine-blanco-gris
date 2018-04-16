@@ -12,6 +12,7 @@ import vista.Detalle;
 
 /**
  * Ventana y máquina de estados
+ * Las diferentes fases de la aplicación son diferentes JPanel
  * @author aarroyoc
  */
 public class StateMachine extends JFrame {
@@ -19,6 +20,11 @@ public class StateMachine extends JFrame {
     private final Cartelera cartelera;
     
     
+    /**
+     * Crea la ventana y máquina de estados con una cartelera
+     * Entra al estado CARTELERA
+     * @param cartelera Cartelera que usará el sistema
+     */
     public StateMachine(Cartelera cartelera){
         this.cartelera = cartelera;
         this.currentState = new Inicio(this,cartelera);
@@ -38,16 +44,26 @@ public class StateMachine extends JFrame {
         });
     }
     
-    public void verDetalles(Pelicula pelicula){
+    /**
+     * Pasar al estado DETALLE con una película
+     * @param pelicula Película seleccionada 
+     */
+    public void goDetails(Pelicula pelicula){
         this.currentState = new Detalle(this,pelicula);
         this.update();
     }
     
+    /**
+     * Pasar al estado CARTELERA
+     */
     public void goCartelera(){
         this.currentState = new Inicio(this,this.cartelera);
         this.update();
     }
     
+    /**
+     * Actualizar panel según el nuevo estado
+     */
     private void update(){
         this.setContentPane(this.currentState);
         this.validate();

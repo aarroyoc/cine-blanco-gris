@@ -37,8 +37,10 @@ public class Inicio extends javax.swing.JPanel {
     }
     
     private JPanel mostrarCartelera(){
+        int columnas = 3;
+        int filas =(int)Math.ceil(cartelera.getPeliculas().size()/(float)columnas);
         films = new JPanel();
-        films.setLayout(new java.awt.GridLayout(4,3));
+        films.setLayout(new java.awt.GridLayout(filas,columnas));
         for(Pelicula pelicula : cartelera.getPeliculas()){
             JPanel panel = new JPanel();
             panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));

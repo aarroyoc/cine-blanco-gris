@@ -24,6 +24,6 @@ public class InicioController {
     }
     
     public void goDetail(Pelicula pelicula){
-        state.verDetalles(pelicula);
+        state.goDetails(pelicula);
     }
 }

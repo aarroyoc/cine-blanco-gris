@@ -1,11 +1,5 @@
 package main;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import modelo.Cartelera;
 import modelo.PeliculaInfo;
 import modelo.Pelicula;
@@ -17,6 +11,11 @@ import java.time.LocalDateTime;
  * @author aarroyoc
  */
 public class Defecto {
+    
+    /**
+     * Cartelera por defecto para pruebas
+     * @return Una cartelera por defecto
+     */
     public static Cartelera CarteleraDefecto(){
         Cartelera cartelera = new Cartelera();
         
@@ -150,6 +149,59 @@ public class Defecto {
         pelicula.addSesion(LocalDateTime.of(2018,4,23,21,30));
         cartelera.addPelicula(pelicula);
 
+        
+        return cartelera;
+    }
+    
+    /**
+     * Cartelera por defecto para pruebas, solo cine de Chaplin
+     * @return 
+     */
+    public static Cartelera CarteleraChaplin(){
+        Cartelera cartelera = new Cartelera();
+        PeliculaInfo info;
+        Pelicula pelicula;
+         
+        /* El Gran Dictador */
+        
+        info = new PeliculaInfo(
+                "El Gran Dictador",
+                "Un humilde barbero judío que combatió con el ejército de Tomania en la primera guerra mundial vuelve a su casa años después del fin del conflicto. Amnèsico a causa de un accidente de avión, no recuerda prácticamente nada de su vida pasada, y no conoce la situación política actual del país: Adenoid Hynkel, un dictador fascista y racista, ha llegado al poder y ha iniciado la persecución del pueblo judío, a quien considera responsable de la situación de crisis que vive el país. Paralelamente, Hynkel y sus colaboradores han empezado a preparar una ofensiva militar destinada a la conquista de todo el mundo.",
+                "Charles Chaplin",
+                1940,
+                "ElGranDictador.jpg");
+        pelicula = new Pelicula(info);
+        pelicula.addSesion(LocalDateTime.of(2018,4,22,22,30));
+        cartelera.addPelicula(pelicula);
+        
+        /* Luces de Ciudad */
+        
+        info = new PeliculaInfo(
+                "Luces de Ciudad",
+                "Un pobre vagabundo (Charles Chaplin) pasa mil y un avatares para conseguir dinero y ayudar a una pobre chica ciega (Virginia Cherrill) de la que se ha enamorado.",
+                "Charles Chaplin",
+                1931,
+                "LucesDeCiudad.jpg");
+        pelicula = new Pelicula(info);
+        pelicula.addSesion(LocalDateTime.of(2018,4,23,18,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,23,21,00));
+        pelicula.addSesion(LocalDateTime.of(2018,4,23,22,30));
+        cartelera.addPelicula(pelicula);
+        
+        /* Tiempos Modernos */
+        
+        info = new PeliculaInfo(
+                "Tiempos modernos",
+                "Extenuado por el frenético ritmo de la cadena de montaje, un obrero metalúrgico acaba perdiendo la razón. Después de recuperarse en un hospital, sale y es encarcelado por participar en una manifestación en la que se encontraba por casualidad. En la cárcel, también sin pretenderlo, ayuda a controlar un motín, gracias a lo cual queda en libertad. Una vez fuera, reemprende la lucha por la supervivencia en compañía de una joven huérfana a la que conoce en la calle. ",
+                "Charles Chaplin",
+                1936,
+                "TiemposModernos.jpg");
+        pelicula = new Pelicula(info);
+        pelicula.addSesion(LocalDateTime.of(2018,4,21,18,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,22,18,30));
+        pelicula.addSesion(LocalDateTime.of(2018,4,23,18,30));
+        cartelera.addPelicula(pelicula);
+        
         
         return cartelera;
     }
