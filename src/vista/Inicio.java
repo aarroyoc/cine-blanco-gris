@@ -22,10 +22,8 @@ public class Inicio extends javax.swing.JPanel {
     private final Cartelera cartelera;
     private final InicioController control;
     private JPanel films;
-    private JScrollPane scroll;
-    /**
-     * Creates new form Inicio
-     */
+    private final JScrollPane scroll;
+   
     public Inicio(StateMachine ventana, Cartelera cartelera) {
         this.cartelera = cartelera;
         this.control = new InicioController(ventana,cartelera,this);
@@ -49,10 +47,8 @@ public class Inicio extends javax.swing.JPanel {
             botonPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER,0,0));
             JButton boton = new JButton();
             boton.setIcon(pelicula.getInfo().getPoster());
-            boton.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    control.goDetail(pelicula);
-                }
+            boton.addActionListener((java.awt.event.ActionEvent evt) -> {
+                control.goDetail(pelicula);
             });
             botonPanel.add(boton);
             panel.add(botonPanel);
