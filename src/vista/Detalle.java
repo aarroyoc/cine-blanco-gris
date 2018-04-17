@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -52,6 +53,9 @@ public class Detalle extends javax.swing.JPanel {
             times.forEach((time)->{
                 JButton button = new JButton();
                 button.setText(time.format(DateTimeFormatter.ofPattern("HH:mm")));
+                button.addActionListener((java.awt.event.ActionEvent evt) -> {
+                    control.goTickets(LocalDateTime.of(date,time));
+                });
                 panel.add(button);
             });
             sesiones.addTab(date.format(DateTimeFormatter.ofPattern("dd")), panel);

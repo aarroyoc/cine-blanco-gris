@@ -7,6 +7,7 @@ package vista;
 
 import modelo.*;
 import main.StateMachine;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -26,5 +27,9 @@ public class DetalleController {
     
     public void goBack(){
         state.goCartelera();
+    }
+    
+    public void goTickets(LocalDateTime sesion){
+        state.goTickets(pelicula, sesion);
     }
 }

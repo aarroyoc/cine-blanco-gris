@@ -3,12 +3,14 @@ package main;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.event.*;
+import java.time.LocalDateTime;
 
 import modelo.Cartelera;
 import modelo.Pelicula;
 
 import vista.Inicio;
 import vista.Detalle;
+import vista.Compra;
 
 /**
  * Ventana y máquina de estados
@@ -58,6 +60,16 @@ public class StateMachine extends JFrame {
      */
     public void goCartelera(){
         this.currentState = new Inicio(this,this.cartelera);
+        this.update();
+    }
+    
+    /**
+     * Pasar al estado Compra
+     * @param pelicula Película seleccionada
+     * @param sesion Sesión seleccionada
+     */
+    public void goTickets(Pelicula pelicula, LocalDateTime sesion){
+        this.currentState = new Compra(this,pelicula,sesion);
         this.update();
     }
     
