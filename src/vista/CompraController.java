@@ -27,7 +27,9 @@ public class CompraController {
     }
     
     public void siguiente(){
-        
+        int precioNormales=v.getSEntradasNormalesValue()*7;
+        int precioNinos=v.getSEntradasNinosValue()*5;
+        state.goPago(precioNormales+precioNinos);
     }
     
     public void updatePrice(){
