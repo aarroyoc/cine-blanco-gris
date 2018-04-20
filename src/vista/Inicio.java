@@ -14,7 +14,7 @@ import modelo.PeliculaInfo;
 import javax.swing.*;
 
 /**
- *
+ * @author sergalo
  * @author aarroyoc
  */
 public class Inicio extends javax.swing.JPanel {
@@ -24,6 +24,11 @@ public class Inicio extends javax.swing.JPanel {
     private JPanel films;
     private final JScrollPane scroll;
    
+    /**
+     * Creates new form Pago
+     * @param ventana
+     * @param cartelera
+     */
     public Inicio(StateMachine ventana, Cartelera cartelera) {
         this.cartelera = cartelera;
         this.control = new InicioController(ventana,cartelera,this);

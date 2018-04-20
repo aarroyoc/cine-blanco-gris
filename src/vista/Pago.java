@@ -9,8 +9,8 @@ import main.StateMachine;
 import java.text.DecimalFormat;
 
 /**
- *
- * @author seralpa
+ * @author aarroyoc
+ * @author sergalo
  */
 public class Pago extends javax.swing.JPanel {
 
@@ -19,6 +19,8 @@ public class Pago extends javax.swing.JPanel {
     private final float precio;
     /**
      * Creates new form Pago
+     * @param state
+     * @param precio
      */
     public Pago(StateMachine state,float precio) {
         initComponents();
@@ -63,11 +65,6 @@ public class Pago extends javax.swing.JPanel {
         jLabel1.setText("Seleccione su método de pago");
 
         tarjetaCredito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Tarjetas.png"))); // NOI18N
-        tarjetaCredito.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tarjetaCreditoMouseClicked(evt);
-            }
-        });
         tarjetaCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tarjetaCreditoActionPerformed(evt);
@@ -75,11 +72,6 @@ public class Pago extends javax.swing.JPanel {
         });
 
         payPal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/PayPal.png"))); // NOI18N
-        payPal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                payPalMouseClicked(evt);
-            }
-        });
         payPal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 payPalActionPerformed(evt);
@@ -87,11 +79,6 @@ public class Pago extends javax.swing.JPanel {
         });
 
         criptomoneda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Dogecoin.png"))); // NOI18N
-        criptomoneda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                criptomonedaMouseClicked(evt);
-            }
-        });
         criptomoneda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 criptomonedaActionPerformed(evt);
@@ -100,11 +87,6 @@ public class Pago extends javax.swing.JPanel {
 
         tarjetaFidelizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Points.jpg"))); // NOI18N
         tarjetaFidelizacion.setEnabled(false);
-        tarjetaFidelizacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tarjetaFidelizacionMouseClicked(evt);
-            }
-        });
         tarjetaFidelizacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tarjetaFidelizacionActionPerformed(evt);
@@ -123,11 +105,6 @@ public class Pago extends javax.swing.JPanel {
         jLabel3.setText("para acumular puntos con su compra");
 
         atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Flecha.png"))); // NOI18N
-        atras.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                atrasMouseClicked(evt);
-            }
-        });
         atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atrasActionPerformed(evt);
@@ -241,29 +218,9 @@ public class Pago extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tarjetaCreditoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tarjetaCreditoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tarjetaCreditoMouseClicked
-
-    private void payPalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_payPalMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_payPalMouseClicked
-
-    private void criptomonedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_criptomonedaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_criptomonedaMouseClicked
-
     private void validarNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_validarNumMouseClicked
         c.validarNum();
     }//GEN-LAST:event_validarNumMouseClicked
-
-    private void atrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_atrasMouseClicked
-
-    private void tarjetaFidelizacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tarjetaFidelizacionMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tarjetaFidelizacionMouseClicked
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         c.atras();
@@ -285,28 +242,52 @@ public class Pago extends javax.swing.JPanel {
         c.pasarelaPago();
     }//GEN-LAST:event_tarjetaFidelizacionActionPerformed
 
+    /**
+     *
+     * @return numero de tarjeta de fidelizacion introducido
+     */
     public String getNum(){
         return numTarjetaFidelizacion.getText();
     }
     
+    /**
+     *
+     * @param p precio sin el IVA
+     */
     public void setPrecioBruto(String p){
         precioBruto.setText(p+"€");
     }
     
+    /**
+     * 
+     * @param p cantidad correspondiente al IVA
+     */
     public void setIVA(float p){
         iva.setText(p+"€");
     }
     
+    /**
+     *
+     * @param p precio total
+     */
     public void setTotal(float p){
         precioTotal.setText(p+"€");
     }
     
+    /**
+     *
+     * @param p puntos que seran obtenidos al realizar la compra
+     */
     public void setPuntos(int p){
         puntos.setText(p+"");
     }
     
-    public void setTarjetaFidelizacionON(){
-        tarjetaFidelizacion.setEnabled(true);
+    /**
+     * Enciende o apaga el boton trarjetaFidelizacion
+     * @param state
+     */
+    public void setTarjetaFidelizacionButton(boolean state){
+        tarjetaFidelizacion.setEnabled(state);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

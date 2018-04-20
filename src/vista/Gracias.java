@@ -7,14 +7,15 @@ package vista;
 
 import main.StateMachine;
 /**
- *
- * @author seralpa
+ * @author aarroyoc
+ * @author sergalo
  */
 public class Gracias extends javax.swing.JPanel {
 
     private final GraciasController c;
     /**
      * Creates new form Gracias
+     * @param state
      */
     public Gracias(StateMachine state) {
         c=new GraciasController(this,state);

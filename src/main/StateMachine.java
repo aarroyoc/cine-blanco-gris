@@ -82,7 +82,7 @@ public class StateMachine extends JFrame {
     }
     
     /**
-     * Pasar al estado 
+     * Pasar al estado Compra
      */
     public void goTicketsBack(){
         this.currentState = new Compra(this,pelicula,sesion);

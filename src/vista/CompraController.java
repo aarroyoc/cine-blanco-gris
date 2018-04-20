@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 
 /**
- *
- * @author seralpa
+ * @author aarroyoc
+ * @author sergalo
  */
 public class CompraController {
     private final Compra v;
@@ -15,6 +15,13 @@ public class CompraController {
     private final Pelicula pelicula;
     private final LocalDateTime sesion;
     
+    /**
+     * Se crea el controlador de Compra
+     * @param state
+     * @param pelicula
+     * @param sesion
+     * @param v
+     */
     public CompraController(StateMachine state, Pelicula pelicula, LocalDateTime sesion,Compra v){
         this.v=v;
         this.state = state;
@@ -22,16 +29,25 @@ public class CompraController {
         this.sesion = sesion;
     }
     
+    /**
+     * Cambia a la ventana detalle
+     */
     public void atras(){
         state.goDetails(pelicula);
     }
     
+    /**
+     * pasa a la ventana pago
+     */
     public void siguiente(){
         int precioNormales=v.getSEntradasNormalesValue()*7;
         int precioNinos=v.getSEntradasNinosValue()*5;
         state.goPago(precioNormales+precioNinos);
     }
     
+    /**
+     * actualiza el precio total de las entradas seleccionadas
+     */
     public void updatePrice(){
         int precioNormales=v.getSEntradasNormalesValue()*7;
         int precioNinos=v.getSEntradasNinosValue()*5;

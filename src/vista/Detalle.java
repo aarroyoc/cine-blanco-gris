@@ -22,13 +22,18 @@ import java.time.format.DateTimeFormatter;
 /**
  *
  * @author aarroyoc
+ * @author sergalo
  */
 public class Detalle extends javax.swing.JPanel {
 
     private final Pelicula pelicula;
     private final DetalleController control;
     
-    
+    /**
+     * Creates new form Compra
+     * @param state
+     * @param pelicula
+     */
     public Detalle(StateMachine state, Pelicula pelicula) {
         this.pelicula = pelicula;
         this.control = new DetalleController(state,pelicula,this);
@@ -37,6 +42,9 @@ public class Detalle extends javax.swing.JPanel {
         sinopsis.setCaretPosition(0);
     }
     
+    /**
+     * Actualiza los componentes de la ventana
+     */
     public void update(){
         peliculaNombre.setText(pelicula.getInfo().getNombre());
         sinopsis.setText(pelicula.getInfo().getSinopsis());

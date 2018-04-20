@@ -11,15 +11,19 @@ import java.time.LocalDateTime;
 
 /**
  * @author aarroyoc
- * @author seralpa
+ * @author sergalo
  */
 public class Compra extends javax.swing.JPanel {
 
     private final CompraController c;
     private Pelicula pelicula;
     private LocalDateTime sesion;
+    
     /**
      * Creates new form Compra
+     * @param state
+     * @param pelicula
+     * @param sesion
      */
     public Compra(StateMachine state, Pelicula pelicula, LocalDateTime sesion) {
         initComponents();
@@ -210,22 +214,41 @@ public class Compra extends javax.swing.JPanel {
         c.atras();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     *
+     * @return numero de entradas normales seleccionadas
+     */
     public int getSEntradasNormalesValue(){
         return (int)sEntradasNormales.getValue();
     }
 
+    /**
+     *
+     * @return numero de entradas para ninos seleccionadas
+     */
     public int getSEntradasNinosValue(){
         return (int)sEntradasNinos.getValue();
     }
     
+    /**
+     * pone el texto introducido en la label precioTotal
+     * @param text
+     */
     public void setPrecioTotal(String text){
         precioTotal.setText(text);
     }
     
+    /**
+     * Enciende o apaga el boton next
+     * @param state
+     */
     public void setNextButton(boolean state){
         next.setEnabled(state);
     }
     
+    /**
+     * actualiza la imagen, el titulo y la fecha y hora de la sesion seleccionada
+     */
     public void update(){
         poster.setIcon(pelicula.getInfo().getPoster());
         tituloPeli.setText(pelicula.getInfo().getNombre());
