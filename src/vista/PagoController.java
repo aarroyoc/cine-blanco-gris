@@ -27,7 +27,7 @@ public class PagoController {
     }
     
     public void pasarelaPago(){
-        
+        state.goThanks();
     }
     
     public void atras(){

@@ -12,6 +12,7 @@ import vista.Inicio;
 import vista.Detalle;
 import vista.Compra;
 import vista.Pago;
+import vista.Gracias;
 
 /**
  * Ventana y máquina de estados
@@ -86,6 +87,11 @@ public class StateMachine extends JFrame {
     
     public void goPago(float price){
         this.currentState = new Pago(this,price);
+        this.update();
+    }
+    
+    public void goThanks(){
+        this.currentState = new Gracias(this);
         this.update();
     }
     

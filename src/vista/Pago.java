@@ -68,11 +68,21 @@ public class Pago extends javax.swing.JPanel {
                 tarjetaCreditoMouseClicked(evt);
             }
         });
+        tarjetaCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tarjetaCreditoActionPerformed(evt);
+            }
+        });
 
         payPal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/PayPal.png"))); // NOI18N
         payPal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 payPalMouseClicked(evt);
+            }
+        });
+        payPal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                payPalActionPerformed(evt);
             }
         });
 
@@ -82,12 +92,22 @@ public class Pago extends javax.swing.JPanel {
                 criptomonedaMouseClicked(evt);
             }
         });
+        criptomoneda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                criptomonedaActionPerformed(evt);
+            }
+        });
 
         tarjetaFidelizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Points.jpg"))); // NOI18N
         tarjetaFidelizacion.setEnabled(false);
         tarjetaFidelizacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tarjetaFidelizacionMouseClicked(evt);
+            }
+        });
+        tarjetaFidelizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tarjetaFidelizacionActionPerformed(evt);
             }
         });
 
@@ -248,6 +268,22 @@ public class Pago extends javax.swing.JPanel {
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         c.atras();
     }//GEN-LAST:event_atrasActionPerformed
+
+    private void tarjetaCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarjetaCreditoActionPerformed
+        c.pasarelaPago();
+    }//GEN-LAST:event_tarjetaCreditoActionPerformed
+
+    private void payPalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payPalActionPerformed
+        c.pasarelaPago();
+    }//GEN-LAST:event_payPalActionPerformed
+
+    private void criptomonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criptomonedaActionPerformed
+        c.pasarelaPago();
+    }//GEN-LAST:event_criptomonedaActionPerformed
+
+    private void tarjetaFidelizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tarjetaFidelizacionActionPerformed
+        c.pasarelaPago();
+    }//GEN-LAST:event_tarjetaFidelizacionActionPerformed
 
     public String getNum(){
         return numTarjetaFidelizacion.getText();
