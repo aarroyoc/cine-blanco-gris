@@ -11,6 +11,7 @@ import modelo.Pelicula;
 import vista.Inicio;
 import vista.Detalle;
 import vista.Compra;
+import vista.Pago;
 
 /**
  * Ventana y máquina de estados
@@ -20,6 +21,8 @@ import vista.Compra;
 public class StateMachine extends JFrame {
     private JPanel currentState;
     private final Cartelera cartelera;
+    private Pelicula pelicula;
+    private LocalDateTime sesion;
     
     
     /**
@@ -46,14 +49,7 @@ public class StateMachine extends JFrame {
         });
     }
     
-    /**
-     * Pasar al estado DETALLE con una película
-     * @param pelicula Película seleccionada 
-     */
-    public void goDetails(Pelicula pelicula){
-        this.currentState = new Detalle(this,pelicula);
-        this.update();
-    }
+
     
     /**
      * Pasar al estado CARTELERA
@@ -64,12 +60,32 @@ public class StateMachine extends JFrame {
     }
     
     /**
+     * Pasar al estado DETALLE con una película
+     * @param pelicula Película seleccionada 
+     */
+    public void goDetails(Pelicula pelicula){
+        this.currentState = new Detalle(this,pelicula);
+        this.pelicula = pelicula;
+        this.update();
+    }
+    
+    /**
      * Pasar al estado Compra
-     * @param pelicula Película seleccionada
      * @param sesion Sesión seleccionada
      */
-    public void goTickets(Pelicula pelicula, LocalDateTime sesion){
+    public void goTickets(LocalDateTime sesion){
         this.currentState = new Compra(this,pelicula,sesion);
+        this.sesion = sesion;
+        this.update();
+    }
+    
+    public void goTicketsBack(){
+        this.currentState = new Compra(this,pelicula,sesion);
+        this.update();
+    }
+    
+    public void goPago(float price){
+        this.currentState = new Pago(this,price);
         this.update();
     }
     

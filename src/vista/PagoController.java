@@ -5,6 +5,9 @@
  */
 package vista;
 
+import java.time.LocalDateTime;
+import main.StateMachine;
+
 /**
  *
  * @author seralpa
@@ -12,8 +15,11 @@ package vista;
 public class PagoController {
     
     private final Pago v;
-    public PagoController(Pago v){
+    private final StateMachine state;
+    
+    public PagoController(StateMachine state,Pago v){
         this.v=v;
+        this.state = state;
     }
     
     public void validarNum(){
@@ -22,5 +28,9 @@ public class PagoController {
     
     public void pasarelaPago(){
         
+    }
+    
+    public void atras(){
+        state.goTicketsBack();
     }
 }

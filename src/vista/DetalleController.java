@@ -30,6 +30,6 @@ public class DetalleController {
     }
     
     public void goTickets(LocalDateTime sesion){
-        state.goTickets(pelicula, sesion);
+        state.goTickets(sesion);
     }
 }

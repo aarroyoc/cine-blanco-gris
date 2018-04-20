@@ -5,6 +5,9 @@
  */
 package vista;
 
+import main.StateMachine;
+import java.text.DecimalFormat;
+
 /**
  *
  * @author seralpa
@@ -17,11 +20,11 @@ public class Pago extends javax.swing.JPanel {
     /**
      * Creates new form Pago
      */
-    public Pago(PagoController c,float precio) {
+    public Pago(StateMachine state,float precio) {
         initComponents();
-        this.c=c;
+        this.c= new PagoController(state,this);
         this.precio=precio;
-        setPrecioBruto(precio/(1+IVA));
+        setPrecioBruto(new DecimalFormat("#.##").format(precio/(1+IVA)));
         setIVA(precio*IVA);
         setTotal(precio);
         setPuntos((int)precio/10);
@@ -59,28 +62,28 @@ public class Pago extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Seleccione su método de pago");
 
-        tarjetaCredito.setText("jButton1");
+        tarjetaCredito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Tarjetas.png"))); // NOI18N
         tarjetaCredito.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tarjetaCreditoMouseClicked(evt);
             }
         });
 
-        payPal.setText("jButton2");
+        payPal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/PayPal.png"))); // NOI18N
         payPal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 payPalMouseClicked(evt);
             }
         });
 
-        criptomoneda.setText("jButton1");
+        criptomoneda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Dogecoin.png"))); // NOI18N
         criptomoneda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 criptomonedaMouseClicked(evt);
             }
         });
 
-        tarjetaFidelizacion.setText("jButton1");
+        tarjetaFidelizacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Points.jpg"))); // NOI18N
         tarjetaFidelizacion.setEnabled(false);
         tarjetaFidelizacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,6 +106,11 @@ public class Pago extends javax.swing.JPanel {
         atras.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 atrasMouseClicked(evt);
+            }
+        });
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
             }
         });
 
@@ -128,30 +136,15 @@ public class Pago extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(numTarjetaFidelizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(validarNum))
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))))
-                .addContainerGap(126, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(atras)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tarjetaCredito)
-                        .addComponent(payPal)
-                        .addComponent(criptomoneda)
-                        .addComponent(tarjetaFidelizacion)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tarjetaCredito)
+                    .addComponent(criptomoneda))
+                .addGap(62, 62, 62)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tarjetaFidelizacion)
+                    .addComponent(payPal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6)
@@ -164,6 +157,24 @@ public class Pago extends javax.swing.JPanel {
                     .addComponent(precioBruto)
                     .addComponent(puntos))
                 .addGap(56, 56, 56))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(numTarjetaFidelizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(validarNum))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(atras)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,12 +192,6 @@ public class Pago extends javax.swing.JPanel {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tarjetaCredito)
-                        .addGap(18, 18, 18)
-                        .addComponent(payPal)
-                        .addGap(18, 18, 18)
-                        .addComponent(criptomoneda))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(precioBruto))
@@ -201,12 +206,18 @@ public class Pago extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(puntos))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tarjetaFidelizacion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                            .addComponent(puntos)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tarjetaCredito)
+                            .addComponent(payPal))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(criptomoneda)
+                            .addComponent(tarjetaFidelizacion))))
+                .addGap(38, 38, 38)
                 .addComponent(atras)
-                .addGap(58, 58, 58))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -234,11 +245,15 @@ public class Pago extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tarjetaFidelizacionMouseClicked
 
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        c.atras();
+    }//GEN-LAST:event_atrasActionPerformed
+
     public String getNum(){
         return numTarjetaFidelizacion.getText();
     }
     
-    public void setPrecioBruto(float p){
+    public void setPrecioBruto(String p){
         precioBruto.setText(p+"€");
     }
     
