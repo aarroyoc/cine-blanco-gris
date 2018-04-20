@@ -37,7 +37,6 @@ public class Compra extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -50,21 +49,19 @@ public class Compra extends javax.swing.JPanel {
         TOTAL = new javax.swing.JLabel();
         jpanel5 = new javax.swing.JPanel();
         precioTotal = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        atras = new javax.swing.JButton();
-        siguiente = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         poster = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         tituloPeli = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
-        setLayout(new java.awt.BorderLayout(0, 10));
+        setMinimumSize(new java.awt.Dimension(600, 400));
+        setPreferredSize(new java.awt.Dimension(600, 400));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Selecciona tus entradas");
-        add(jLabel1, java.awt.BorderLayout.PAGE_START);
-        jLabel1.getAccessibleContext().setAccessibleName("jLabel1");
 
         jPanel1.setPreferredSize(new java.awt.Dimension(318, 130));
         jPanel1.setLayout(new java.awt.GridLayout(3, 2, 60, 30));
@@ -111,32 +108,8 @@ public class Compra extends javax.swing.JPanel {
 
         jPanel1.add(jpanel5);
 
-        add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
-
-        atras.setText("<-Atras");
-        atras.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                atrasMouseClicked(evt);
-            }
-        });
-        jPanel2.add(atras);
-
-        siguiente.setText("Siguiente->");
-        siguiente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                siguienteMouseClicked(evt);
-            }
-        });
-        jPanel2.add(siguiente);
-
-        add(jPanel2, java.awt.BorderLayout.PAGE_END);
-
         jPanel5.setPreferredSize(new java.awt.Dimension(100, 100));
         jPanel5.setLayout(new java.awt.GridLayout(2, 1, 0, 10));
-
-        poster.setText("jLabel2");
         jPanel5.add(poster);
 
         tituloPeli.setText("jLabel5");
@@ -166,16 +139,59 @@ public class Compra extends javax.swing.JPanel {
 
         jPanel5.add(jPanel6);
 
-        add(jPanel5, java.awt.BorderLayout.LINE_END);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Flecha.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Adelante.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2))))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jLabel1.getAccessibleContext().setAccessibleName("jLabel1");
     }// </editor-fold>//GEN-END:initComponents
-
-    private void atrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atrasMouseClicked
-        c.atras();
-    }//GEN-LAST:event_atrasMouseClicked
-
-    private void siguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguienteMouseClicked
-        c.siguiente();
-    }//GEN-LAST:event_siguienteMouseClicked
 
     private void sEntradasNormalesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sEntradasNormalesStateChanged
         c.updatePrice();
@@ -184,6 +200,14 @@ public class Compra extends javax.swing.JPanel {
     private void sEntradasNinosStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sEntradasNinosStateChanged
         c.updatePrice();
     }//GEN-LAST:event_sEntradasNinosStateChanged
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        c.atras();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public int getSEntradasNormalesValue(){
         return (int)sEntradasNormales.getValue();
@@ -200,17 +224,17 @@ public class Compra extends javax.swing.JPanel {
     public void update(){
         poster.setIcon(pelicula.getInfo().getPoster());
         tituloPeli.setText(pelicula.getInfo().getNombre());
-        fecha.setText(sesion.getDayOfWeek()+"  "+sesion.getMonth()+"/"+sesion.getDayOfMonth()+"\n"+sesion.getHour()+":"+sesion.getMinute());
+        fecha.setText(sesion.getDayOfWeek()+"  "+sesion.getMonth()+"/"+sesion.getDayOfMonth()+"  "+sesion.getHour()+":"+sesion.getMinute());
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TOTAL;
-    private javax.swing.JButton atras;
     private javax.swing.JLabel entradaNinos;
     private javax.swing.JLabel entradaNormal;
     private javax.swing.JLabel fecha;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -220,7 +244,6 @@ public class Compra extends javax.swing.JPanel {
     private javax.swing.JLabel precioTotal;
     private javax.swing.JSpinner sEntradasNinos;
     private javax.swing.JSpinner sEntradasNormales;
-    private javax.swing.JButton siguiente;
     private javax.swing.JLabel tituloPeli;
     // End of variables declaration//GEN-END:variables
 }
