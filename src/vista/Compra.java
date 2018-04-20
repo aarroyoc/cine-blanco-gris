@@ -10,7 +10,7 @@ import modelo.Pelicula;
 import java.time.LocalDateTime;
 
 /**
- *
+ * @author aarroyoc
  * @author seralpa
  */
 public class Compra extends javax.swing.JPanel {

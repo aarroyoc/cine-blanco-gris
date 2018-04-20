@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 /**
  * Valores por defecto del modelo
  * @author aarroyoc
+ * @author sergalo
  */
 public class Defecto {
     

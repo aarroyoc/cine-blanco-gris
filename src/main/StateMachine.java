@@ -18,6 +18,7 @@ import vista.Gracias;
  * Ventana y máquina de estados
  * Las diferentes fases de la aplicación son diferentes JPanel
  * @author aarroyoc
+ * @author sergalo
  */
 public class StateMachine extends JFrame {
     private JPanel currentState;
@@ -80,16 +81,26 @@ public class StateMachine extends JFrame {
         this.update();
     }
     
+    /**
+     * Pasar al estado 
+     */
     public void goTicketsBack(){
         this.currentState = new Compra(this,pelicula,sesion);
         this.update();
     }
     
+    /**
+     * Pasar al estado pago
+     * @param price 
+     */
     public void goPago(float price){
         this.currentState = new Pago(this,price);
         this.update();
     }
     
+    /**
+     * Pasar al estado Gracias
+     */
     public void goThanks(){
         this.currentState = new Gracias(this);
         this.update();

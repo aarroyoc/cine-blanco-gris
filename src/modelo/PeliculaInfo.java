@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 /**
  * Modelo de la información de la Película
  * @author aarroyoc
+ * @author sergalo
  */
 public class PeliculaInfo {
     private final String nombre;
