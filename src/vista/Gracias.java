@@ -5,16 +5,19 @@
  */
 package vista;
 
+import main.StateMachine;
 /**
  *
  * @author seralpa
  */
 public class Gracias extends javax.swing.JPanel {
 
+    private final GraciasController c;
     /**
      * Creates new form Gracias
      */
-    public Gracias() {
+    public Gracias(StateMachine state) {
+        c=new GraciasController(this,state);
         initComponents();
     }
 
@@ -36,6 +39,11 @@ public class Gracias extends javax.swing.JPanel {
         jLabel1.setText("Gracias por su compra");
 
         atras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Flecha.png"))); // NOI18N
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("jLabel2");
@@ -63,6 +71,10 @@ public class Gracias extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        c.atras();
+    }//GEN-LAST:event_atrasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
