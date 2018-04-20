@@ -34,5 +34,10 @@ public class CompraController {
         int precioNormales=v.getSEntradasNormalesValue()*7;
         int precioNinos=v.getSEntradasNinosValue()*5;
         v.setPrecioTotal((precioNinos+precioNormales)+"€");
+        if(precioNormales > 0 || precioNinos > 0){
+            v.setNextButton(true);
+        }else{
+            v.setNextButton(false);
+        }
     }
 }

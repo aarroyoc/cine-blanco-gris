@@ -55,7 +55,7 @@ public class Compra extends javax.swing.JPanel {
         tituloPeli = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        next = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(600, 400));
         setPreferredSize(new java.awt.Dimension(600, 400));
@@ -146,10 +146,11 @@ public class Compra extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Adelante.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Adelante.png"))); // NOI18N
+        next.setEnabled(false);
+        next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                nextActionPerformed(evt);
             }
         });
 
@@ -169,7 +170,7 @@ public class Compra extends javax.swing.JPanel {
                                 .addGap(125, 125, 125)
                                 .addComponent(jButton1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))
+                                .addComponent(next)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -186,8 +187,8 @@ public class Compra extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
-                            .addComponent(jButton2))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                            .addComponent(next))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.getAccessibleContext().setAccessibleName("jLabel1");
@@ -201,9 +202,9 @@ public class Compra extends javax.swing.JPanel {
         c.updatePrice();
     }//GEN-LAST:event_sEntradasNinosStateChanged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_nextActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         c.atras();
@@ -221,6 +222,10 @@ public class Compra extends javax.swing.JPanel {
         precioTotal.setText(text);
     }
     
+    public void setNextButton(boolean state){
+        next.setEnabled(state);
+    }
+    
     public void update(){
         poster.setIcon(pelicula.getInfo().getPoster());
         tituloPeli.setText(pelicula.getInfo().getNombre());
@@ -232,7 +237,6 @@ public class Compra extends javax.swing.JPanel {
     private javax.swing.JLabel entradaNormal;
     private javax.swing.JLabel fecha;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -240,6 +244,7 @@ public class Compra extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jpanel5;
+    private javax.swing.JButton next;
     private javax.swing.JLabel poster;
     private javax.swing.JLabel precioTotal;
     private javax.swing.JSpinner sEntradasNinos;
